@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias del Océano</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+</head>
+<body>
+    <header>
+        <h1>Delicias del Océano</h1>
+        <p>¡Sabores frescos del mar y más allá!</p>
+        <p>Seccion de Sushi</p>
+
+        <a id="backToMenu" href="#">
+            <button class="ver-mas" onclick="backtomenu()">Volver a Menu</button>
+        </a>
+        <i class="fas fa-receipt" onclick="showReceipt(currentTable)" id="receipt-icon" style="cursor: pointer; font-size: 1.5em; float: right;"></i>
+    </header>
+    <div class="menu">
+        <div class="menu-item">
+            <img src="img/rollo-normal.avif" alt="Rollo de Sushi">
+            <h2>Rollo de Sushi</h2>
+            <p>Delicioso rollo de sushi con pescado fresco y vegetales.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-rollo" value="normal" checked>
+                Normal: <span class="price-normal">10.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-rollo" value="large">
+                Grande: <span class="price-large">15.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-rollo', -1)">-</button>
+                <input type="number" id="quantity-rollo" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-rollo', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Rollo de Sushi',
+                document.querySelector('input[name=portion-rollo]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-rollo]:checked').value === 'large' ? 15.00 : 10.00,
+                'quantity-rollo', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/nigiri.avif" alt="Sushi Nigiri">
+            <h2>Sushi Nigiri</h2>
+            <p>Tradicional nigiri de arroz con pescado fresco encima.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-nigiri" value="normal" checked>
+                Normal: <span class="price-normal">12.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-nigiri" value="large">
+                Grande: <span class="price-large">17.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-nigiri', -1)">-</button>
+                <input type="number" id="quantity-nigiri" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-nigiri', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Sushi Nigiri',
+                document.querySelector('input[name=portion-nigiri]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-nigiri]:checked').value === 'large' ? 17.00 : 12.00,
+                'quantity-nigiri', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/maki.jpg" alt="Sushi Maki">
+            <h2>Sushi Maki</h2>
+            <p>Rollo de sushi envuelto en alga nori con relleno variado.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-maki" value="normal" checked>
+                Normal: <span class="price-normal">11.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-maki" value="large">
+                Grande: <span class="price-large">16.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-maki', -1)">-</button>
+                <input type="number" id="quantity-maki" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-maki', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Sushi Maki',
+                document.querySelector('input[name=portion-maki]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-maki]:checked').value === 'large' ? 16.00 : 11.00,
+                'quantity-maki', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/temaki.jpg" alt="Sushi Temaki">
+            <h2>Sushi Temaki</h2>
+            <p>Cono de alga nori relleno de arroz y pescado fresco.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-temaki" value="normal" checked>
+                Normal: <span class="price-normal">12.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-temaki" value="large">
+                Grande: <span class="price-large">17.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-temaki', -1)">-</button>
+                <input type="number" id="quantity-temaki" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-temaki', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Sushi Temaki',
+                document.querySelector('input[name=portion-temaki]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-temaki]:checked').value === 'large' ? 17.00 : 12.00,
+                'quantity-temaki', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/sashimi.jpg" alt="Sashimi">
+            <h2>Sashimi</h2>
+            <p>Finas láminas de pescado fresco, servidas sin arroz.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-sashimi" value="normal" checked>
+                Normal: <span class="price-normal">14.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-sashimi" value="large">
+                Grande: <span class="price-large">20.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-sashimi', -1)">-</button>
+                <input type="number" id="quantity-sashimi" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-sashimi', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Sashimi',
+                document.querySelector('input[name=portion-sashimi]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-sashimi]:checked').value === 'large' ? 20.00 : 14.00,
+                'quantity-sashimi', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/fusion.jpg" alt="Sushi Fusión">
+            <h2>Sushi Fusión</h2>
+            <p>Innovador sushi con ingredientes de diferentes culturas.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-fusion" value="normal" checked>
+                Normal: <span class="price-normal">15.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-fusion" value="large">
+                Grande: <span class="price-large">22.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-fusion', -1)">-</button>
+                <input type="number" id="quantity-fusion" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-fusion', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Sushi Fusión',
+                document.querySelector('input[name=portion-fusion]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-fusion]:checked').value === 'large' ? 22.00 : 15.00,
+                'quantity-fusion', currentTable
+            )">Agregar</button>
+        </div>
+    </div>
+    <div class="receipt" id="receipt">
+        <div class="receipt-header">
+            <h1 class="receipt-title">Mar y Tierra</h1>
+            <p class="receipt-subtitle">Especialidades del Mar</p>
+            <p class="receipt-subtitle">Fecha: <span id="receipt-date"></span></p>
+        </div>
+        <div id="receipt-content"></div>
+        <div id="cart-actions">
+            <button class="action-button pay-button" onclick="processPayment(currentTable)">Pagar</button>
+            <button class="action-button reset-button" onclick="resetCart(currentTable)">Vaciar</button>
+        </div>
+        <div class="receipt-footer">
+            ¡Gracias por su preferencia!
+            <br>
+            Vuelva pronto
+        </div>
+        <button class="close-receipt" onclick="closeReceipt()">Cerrar</button>
+    </div>
+    <a id="backToMenuBottom" href="#">
+        <button class="ver-mas" onclick="backtomenuBottom()">Volver a Menu</button>
+    </a>
+    <script src="js/index.js"></script>
+    
+</body>
+</html>

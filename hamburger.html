@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias del Océano</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+</head>
+<body>
+    <header>
+        <h1>Delicias del Océano</h1>
+        <p>¡Sabores frescos del mar y más allá!</p>
+        <p>Seccion de Hamburguesas</p>
+
+        <a id="backToMenu" href="#">
+            <button class="ver-mas" onclick="backtomenu()">Volver a Menu</button>
+        </a>
+        <i class="fas fa-receipt" onclick="showReceipt(currentTable)" id="receipt-icon" style="cursor: pointer; font-size: 1.5em; float: right;"></i>
+    </header>
+    <div class="menu">
+        <div class="menu-item">
+            <img src="img/classica.avif" alt="Hamburguesa Clásica">
+            <h2>Hamburguesa Clásica</h2>
+            <p>Jugosa hamburguesa de res con lechuga, tomate y cebolla.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-classica" value="normal" checked>
+                Normal: <span class="price-normal">12.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-classica" value="large">
+                Grande: <span class="price-large">16.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-classica', -1)">-</button>
+                <input type="number" id="quantity-classica" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-classica', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Hamburguesa Clásica',
+                document.querySelector('input[name=portion-classica]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-classica]:checked').value === 'large' ? 16.00 : 12.00,
+                'quantity-classica', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/bbq.avif" alt="Hamburguesa BBQ">
+            <h2>Hamburguesa BBQ</h2>
+            <p>Hamburguesa de res con salsa BBQ, cebolla caramelizada y queso cheddar.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-bbq" value="normal" checked>
+                Normal: <span class="price-normal">13.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-bbq" value="large">
+                Grande: <span class="price-large">17.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-bbq', -1)">-</button>
+                <input type="number" id="quantity-bbq" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-bbq', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Hamburguesa BBQ',
+                document.querySelector('input[name=portion-bbq]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-bbq]:checked').value === 'large' ? 17.00 : 13.00,
+                'quantity-bbq', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/veget.webp" alt="Hamburguesa Vegetariana">
+            <h2>Hamburguesa Vegetariana</h2>
+            <p>Deliciosa hamburguesa hecha de garbanzos y especias, con aguacate.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-veget" value="normal" checked>
+                Normal: <span class="price-normal">11.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-veget" value="large">
+                Grande: <span class="price-large">15.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-veget', -1)">-</button>
+                <input type="number" id="quantity-veget" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-veget', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Hamburguesa Vegetariana',
+                document.querySelector('input[name=portion-veget]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-veget]:checked').value === 'large' ? 15.00 : 11.00,
+                'quantity-veget', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/picante.webp" alt="Hamburguesa Picante">
+            <h2>Hamburguesa Picante</h2>
+            <p>Hamburguesa de res con jalapeños, salsa picante y queso pepper jack.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-picante" value="normal" checked>
+                Normal: <span class="price-normal">14.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-picante" value="large">
+                Grande: <span class="price-large">18.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-picante', -1)">-</button>
+                <input type="number" id="quantity-picante" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-picante', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Hamburguesa Picante',
+                document.querySelector('input[name=portion-picante]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-picante]:checked').value === 'large' ? 18.00 : 14.00,
+                'quantity-picante', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/doble.jpg" alt="Hamburguesa Doble">
+            <h2>Hamburguesa Doble</h2>
+            <p>Dos jugosas hamburguesas de res con todos los ingredientes clásicos.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-doble" value="normal" checked>
+                Normal: <span class="price-normal">15.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-doble" value="large">
+                Grande: <span class="price-large">20.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-doble', -1)">-</button>
+                <input type="number" id="quantity-doble" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-doble', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Hamburguesa Doble',
+                document.querySelector('input[name=portion-doble]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-doble]:checked').value === 'large' ? 20.00 : 15.00,
+                'quantity-doble', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/fiesta.jpg" alt="Hamburguesa Fiesta">
+            <h2>Hamburguesa Fiesta</h2>
+            <p>Hamburguesa con guacamole, pico de gallo y queso fresco.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-fiesta" value="normal" checked>
+                Normal: <span class="price-normal">13.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-fiesta" value="large">
+                Grande: <span class="price-large">18.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-fiesta', -1)">-</button>
+                <input type="number" id="quantity-fiesta" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-fiesta', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Hamburguesa Fiesta',
+                document.querySelector('input[name=portion-fiesta]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-fiesta]:checked').value === 'large' ? 18.00 : 13.00,
+                'quantity-fiesta', currentTable
+            )">Agregar</button>
+        </div>
+    </div>
+    <div class="receipt" id="receipt">
+        <div class="receipt-header">
+            <h1 class="receipt-title">Mar y Tierra</h1>
+            <p class="receipt-subtitle">Especialidades del Mar</p>
+            <p class="receipt-subtitle">Fecha: <span id="receipt-date"></span></p>
+        </div>
+        <div id="receipt-content"></div>
+        <div id="cart-actions">
+            <button class="action-button pay-button" onclick="processPayment(currentTable)">Pagar</button>
+            <button class="action-button reset-button" onclick="resetCart(currentTable)">Vaciar</button>
+        </div>
+        <div class="receipt-footer">
+            ¡Gracias por su preferencia!
+            <br>
+            Vuelva pronto
+        </div>
+        <button class="close-receipt" onclick="closeReceipt()">Cerrar</button>
+    </div>
+    <a id="backToMenuBottom" href="#">
+        <button class="ver-mas" onclick="backtomenuBottom()">Volver a Menu</button>
+    </a>
+    <script src="js/index.js"></script>
+  
+</body>
+</html>

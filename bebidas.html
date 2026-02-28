@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias del Océano</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+</head>
+<body>
+    <header>
+        <h1>Delicias del Océano</h1>
+        <p>¡Sabores frescos del mar y más allá!</p>
+        <p>Seccion de Bebidas</p>
+
+        <a id="backToMenu" href="#">
+            <button class="ver-mas" onclick="backtomenu()">Volver a Menu</button>
+        </a>
+        <i class="fas fa-receipt" onclick="showReceipt(currentTable)" id="receipt-icon" style="cursor: pointer; font-size: 1.5em; float: right;"></i>
+    </header>
+    <div class="menu">
+        <div class="menu-item">
+            <img src="img/naranja.webp" alt="Jugo de Naranja">
+            <h2>Jugo de Naranja</h2>
+            <p>Refrescante jugo de naranja natural, ideal para cualquier momento.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-naranja" value="normal" checked>
+                Normal: <span class="price-normal">5.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-naranja" value="large">
+                Grande: <span class="price-large">8.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-naranja', -1)">-</button>
+                <input type="number" id="quantity-naranja" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-naranja', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Jugo de Naranja',
+                document.querySelector('input[name=portion-naranja]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-naranja]:checked').value === 'large' ? 8.00 : 5.00,
+                'quantity-naranja', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/mora.avif" alt="Jugo de Mora">
+            <h2>Jugo de Mora</h2>
+            <p>Delicioso jugo de mora, lleno de sabor y antioxidantes.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-mora" value="normal" checked>
+                Normal: <span class="price-normal">6.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-mora" value="large">
+                Grande: <span class="price-large">9.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-mora', -1)">-</button>
+                <input type="number" id="quantity-mora" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-mora', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Jugo de Mora',
+                document.querySelector('input[name=portion-mora]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-mora]:checked').value === 'large' ? 9.00 : 6.00,
+                'quantity-mora', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/limonada.webp" alt="Limonada">
+            <h2>Limonada</h2>
+            <p>Clásica limonada fresca, perfecta para refrescarte en un día caluroso.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-limonada" value="normal" checked>
+                Normal: <span class="price-normal">5.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-limonada" value="large">
+                Grande: <span class="price-large">8.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-limonada', -1)">-</button>
+                <input type="number" id="quantity-limonada" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-limonada', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Limonada',
+                document.querySelector('input[name=portion-limonada]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-limonada]:checked').value === 'large' ? 8.00 : 5.00,
+                'quantity-limonada', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/coca.jpg" alt="Coca">
+            <h2>Coca Cola</h2>
+            <p>Coca Cola Clásica</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-coca" value="normal" checked>
+                Normal: <span class="price-normal">4.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-coca" value="large">
+                Grande: <span class="price-large">7.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-coca', -1)">-</button>
+                <input type="number" id="quantity-coca" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-coca', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Coca Cola',
+                document.querySelector('input[name=portion-coca]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-coca]:checked').value === 'large' ? 7.00 : 4.00,
+                'quantity-coca', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/coctel.webp" alt="Cóctel">
+            <h2>Cóctel</h2>
+            <p>Exquisitos cócteles preparados por nuestros bartenders.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-coctel" value="normal" checked>
+                Normal: <span class="price-normal">10.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-coctel" value="large">
+                Grande: <span class="price-large">15.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-coctel', -1)">-</button>
+                <input type="number" id="quantity-coctel" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-coctel', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Cóctel',
+                document.querySelector('input[name=portion-coctel]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-coctel]:checked').value === 'large' ? 15.00 : 10.00,
+                'quantity-coctel', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/energy.jpeg" alt="Bebida Energética">
+            <h2>Bebida Energética</h2>
+            <p>Recarga tus energías con nuestras bebidas energéticas.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-energy" value="normal" checked>
+                Normal: <span class="price-normal">6.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-energy" value="large">
+                Grande: <span class="price-large">9.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-energy', -1)">-</button>
+                <input type="number" id="quantity-energy" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-energy', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Bebida Energética',
+                document.querySelector('input[name=portion-energy]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-energy]:checked').value === 'large' ? 9.00 : 6.00,
+                'quantity-energy', currentTable
+            )">Agregar</button>
+        </div>
+    </div>
+    <div class="receipt" id="receipt">
+        <div class="receipt-header">
+            <h1 class="receipt-title">Mar y Tierra</h1>
+            <p class="receipt-subtitle">Especialidades del Mar</p>
+            <p class="receipt-subtitle">Fecha: <span id="receipt-date"></span></p>
+        </div>
+        <div id="receipt-content"></div>
+        <div id="cart-actions">
+            <button class="action-button pay-button" onclick="processPayment(currentTable)">Pagar</button>
+            <button class="action-button reset-button" onclick="resetCart(currentTable)">Vaciar</button>
+        </div>
+        <div class="receipt-footer">
+            ¡Gracias por su preferencia!
+            <br>
+            Vuelva pronto
+        </div>
+        <button class="close-receipt" onclick="closeReceipt()">Cerrar</button>
+    </div>
+    <a id="backToMenuBottom" href="#">
+        <button class="ver-mas" onclick="backtomenuBottom()">Volver a Menu</button>
+    </a>
+    <script src="js/index.js"></script>
+    
+</body>
+</html>

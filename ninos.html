@@ -1,0 +1,199 @@
+
+</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias del Océano</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+</head>
+<body>
+    <header>
+        <h1>Delicias del Océano</h1>
+        <p>¡Sabores frescos del mar y más allá!</p>
+        <p>Platillos para niños</p>
+
+        <a id="backToMenu" href="#">
+            <button class="ver-mas" onclick="backtomenu()">Volver a Menu</button>
+        </a>
+       </header>
+        <i class="fas fa-receipt" onclick="showReceipt(currentTable)" id="receipt-icon" style="cursor: pointer; font-size: 1.5em; float: right;"></i>
+    <div class="menu">
+        <div class="menu-item">
+            <img src="img/nino-pasta.jpg" alt="Pasta para Niños">
+            <h2>Pasta para Niños</h2>
+            <p>Pasta con salsa de tomate y queso, perfecta para los más pequeños.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-pastan" value="normal" checked>
+                Normal: <span class="price-normal">7.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-pastan" value="large">
+                Grande: <span class="price-large">10.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-pastan', -1)">-</button>
+                <input type="number" id="quantity-pastan" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-pastan', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Pasta para Niños',
+                document.querySelector('input[name=portion-pastan]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-pastan]:checked').value === 'large' ? 10.00 : 7.00,
+                'quantity-pastan', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/nino-hamburg.webp" alt="Hamburguesa para Niños">
+            <h2>Hamburguesa para Niños</h2>
+            <p>Pequeña hamburguesa de res con queso y lechuga.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-hamburguesa" value="normal" checked>
+                Normal: <span class="price-normal">8.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-hamburguesa" value="large">
+                Grande: <span class="price-large">12.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-hamburguesa', -1)">-</button>
+                <input type="number" id="quantity-hamburguesa" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-hamburguesa', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Hamburguesa para Niños',
+                document.querySelector('input[name=portion-hamburguesa]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-hamburguesa]:checked').value === 'large' ? 12.00 : 8.00,
+                'quantity-hamburguesa', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/nino-pizza.jpeg" alt="Pizza para Niños">
+            <h2>Pizza para Niños</h2>
+            <p>Pizza con pepperoni y queso, ideal para compartir.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-pizza" value="normal" checked>
+                Normal: <span class="price-normal">9.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-pizza" value="large">
+                Grande: <span class="price-large">13.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-pizza', -1)">-</button>
+                <input type="number" id="quantity-pizza" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-pizza', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Pizza para Niños',
+                document.querySelector('input[name=portion-pizza]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-pizza]:checked').value === 'large' ? 13.00 : 9.00,
+                'quantity-pizza', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/nino-tortilla.jpg" alt="Tortilla para Niños">
+            <h2>Tortilla para Niños</h2>
+            <p>Tortilla de huevo con verduras, nutritiva y deliciosa.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-tortilla" value="normal" checked>
+                Normal: <span class="price-normal">6.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-tortilla" value="large">
+                Grande: <span class="price-large">9.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-tortilla', -1)">-</button>
+                <input type="number" id="quantity-tortilla" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-tortilla', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Tortilla para Niños',
+                document.querySelector('input[name=portion-tortilla]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-tortilla]:checked').value === 'large' ? 9.00 : 6.00,
+                'quantity-tortilla', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/nuggets.jpeg" alt="Nuggets de Pollo">
+            <h2>Nuggets de Pollo</h2>
+            <p>Crujientes nuggets de pollo, perfectos para los pequeños.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-nuggets" value="normal" checked>
+                Normal: <span class="price-normal">7.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-nuggets" value="large">
+                Grande: <span class="price-large">10.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-nuggets', -1)">-</button>
+                <input type="number" id="quantity-nuggets" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-nuggets', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Nuggets de Pollo',
+                document.querySelector('input[name=portion-nuggets]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-nuggets]:checked').value === 'large' ? 10.00 : 7.00,
+                'quantity-nuggets', currentTable
+            )">Agregar</button>
+        </div>
+        <div class="menu-item">
+            <img src="img/fruta.jpeg" alt="Fruta Fresca">
+            <h2>Fruta Fresca</h2>
+            <p>Variedad de frutas frescas, saludables y deliciosas.</p>
+            <p>Precio:</p>
+            <label>
+                <input type="radio" name="portion-fruta" value="normal" checked>
+                Normal: <span class="price-normal">5.00</span>
+            </label>
+            <label>
+                <input type="radio" name="portion-fruta" value="large">
+                Grande: <span class="price-large">8.00</span>
+            </label>
+            <div class="quantity-control">
+                <button class="quantity-btn" onclick="changeQuantity('quantity-fruta', -1)">-</button>
+                <input type="number" id="quantity-fruta" name="quantity" min="1" value="1" readonly>
+                <button class="quantity-btn" onclick="changeQuantity('quantity-fruta', 1)">+</button>
+            </div>
+            <button class="ver-mas" onclick="addToReceipt(
+                'Fruta Fresca',
+                document.querySelector('input[name=portion-fruta]:checked').value === 'large' ? 'Grande' : 'Normal',
+                document.querySelector('input[name=portion-fruta]:checked').value === 'large' ? 8.00 : 5.00,
+                'quantity-fruta', currentTable
+            )">Agregar</button>
+        </div>
+    </div>
+    <div class="receipt" id="receipt">
+        <div class="receipt-header">
+            <h1 class="receipt-title">Mar y Tierra</h1>
+            <p class="receipt-subtitle">Especialidades del Mar</p>
+            <p class="receipt-subtitle">Fecha: <span id="receipt-date"></span></p>
+        </div>
+        <div id="receipt-content"></div>
+        <div id="cart-actions">
+            <button class="action-button pay-button" onclick="processPayment(currentTable)">Pagar</button>
+            <button class="action-button reset-button" onclick="resetCart(currentTable)">Vaciar</button>
+        </div>
+        <div class="receipt-footer">
+            ¡Gracias por su preferencia!
+            <br>
+            Vuelva pronto
+        </div>
+        <button class="close-receipt" onclick="closeReceipt()">Cerrar</button>
+    </div>
+    <a id="backToMenuBottom" href="#">
+        <button class="ver-mas" onclick="backtomenuBottom()">Volver a Menu</button>
+    </a>
+    <script src="js/index.js"></script>
+
+</body>
+</html>
