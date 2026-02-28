@@ -16,7 +16,7 @@ This mobile application, built using **Apache Cordova**, is designed to help res
 
 - **Cordova**: The app is built using Apache Cordova.
 - **Android**: Designed specifically for Android devices.
-
+- **SQLITE** : Databse For mobile devices 
 
  
 
